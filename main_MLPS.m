@@ -49,21 +49,24 @@ class = allTimes(:,3);
 ql = allTimes(:,4:end);
 
 % select sample set
-firstSample = initSample;
-finalSample = initSample+sampleSize-1;
-sampleSet = firstSample:finalSample;
-
-qlExp = ql(sampleSet,:);
-rtExp = rt(sampleSet);
-classExp = class(sampleSet);
-numClassExp = hist(classExp, 1:R);
+if sampleSize == 0
+    qlExp = ql(initSample:end,:);
+    rtExp = rt(initSample:end);
+    classExp = class(initSample:end);
+else
+    sampleSet = initSample:initSample+sampleSize-1;
+    qlExp = ql(sampleSet,:);
+    rtExp = rt(sampleSet);
+    classExp = class(sampleSet);
+end
+numClassExp = hist(classExp,[1:R]);
 
 % remove samples with zero response times
 rtzero = rtExp ==0;
-if(sum(rtzero)>0)
-    rtExp = rtExp(rtExp>0);
+if sum(rtzero)>0
     classExp = classExp(rtExp>0);
     qlExp = qlExp(rtExp>0,:);
+    rtExp = rtExp(rtExp>0);
 end
 
 % Estimate number of threads 

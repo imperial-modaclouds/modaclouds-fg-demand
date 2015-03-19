@@ -46,6 +46,7 @@ rt = allTimes(:,2);
 class = allTimes(:,3);
 ql = allTimes(:,4:end);
 
+% select sample set
 if sampleSize == 0
     qlExp = ql(initSample:end,:);
     rtExp = rt(initSample:end);
@@ -58,6 +59,7 @@ else
 end
 numClassExp = hist(classExp,[1:R]);
 
+% remove samples with zero response times
 rtzero = rtExp ==0;
 if sum(rtzero)>0
     classExp = classExp(rtExp>0);

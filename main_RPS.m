@@ -47,18 +47,25 @@ rt = allTimes(:,2);
 class = allTimes(:,3);
 ql = allTimes(:,4:end);
 
-sampleSet = initSample:initSample+sampleSize-1;
-
-qlExp = ql(sampleSet,:);
-rtExp = rt(sampleSet);
-classExp = class(sampleSet);
+% select sample set
+if sampleSize == 0
+    qlExp = ql(initSample:end,:);
+    rtExp = rt(initSample:end);
+    classExp = class(initSample:end);
+else
+    sampleSet = initSample:initSample+sampleSize-1;
+    qlExp = ql(sampleSet,:);
+    rtExp = rt(sampleSet);
+    classExp = class(sampleSet);
+end
 numClassExp = hist(classExp,[1:R]);
 
+% remove samples with zero response times
 rtzero = rtExp ==0;
-if(sum(rtExp)>0)
-    rtExp = rtExp(rtExp>0);
+if sum(rtzero)>0
     classExp = classExp(rtExp>0);
     qlExp = qlExp(rtExp>0,:);
+    rtExp = rtExp(rtExp>0);
 end
 
 % run ERPS method
