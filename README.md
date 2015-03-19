@@ -1,4 +1,4 @@
-modaclouds-FG-demandEstimation
+modaclouds-fg-demandEstimation
 ==============================
 
 Filling The Gap - Demand Estimation methods
