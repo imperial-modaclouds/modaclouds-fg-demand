@@ -27,30 +27,35 @@ sampleSize = 100;
 
 
 %% RPS
+disp('Executing RPS');
 demandEst = main_RPS(data, initSample, sampleSize, V); 
 filename = ['res/RPS_', name, '_SS',int2str(sampleSize)];
 save([filename,'.mat'],'demandEst');
 RPS = demandEst;
 
 %% ERPS
+disp('Executing ERPS');
 demandEst = main_ERPS(data, initSample, sampleSize, V); 
 filename = ['res/ERPS_', name, '_SS',int2str(sampleSize)];
 save([filename,'.mat'],'demandEst');
 ERPS = demandEst;
 
 %% MLPS
+disp('Executing MLPS');
 demandEst = main_MLPS(data, initSample, sampleSize, V); 
 filename = ['res/MLPS_', name, '_SS',int2str(sampleSize)];
 save([filename,'.mat'],'demandEst');
 MLPS = demandEst;
 
 %% MINPS
+disp('Executing MINPS');
 demandEst = main_MINPS(data, initSample, sampleSize, V); 
 filename = ['res/MINPS_', name, '_SS',int2str(sampleSize)];
 save([filename,'.mat'],'demandEst');
 MINPS = demandEst;
 
 %% FMLPS
+disp('Executing FMLPS');
 demandEst = main_FMLPS(data, initSample, sampleSize, V); 
 filename = ['res/FMLPS_', name, '_SS',int2str(sampleSize)];
 save([filename,'.mat'],'demandEst');

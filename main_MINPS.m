@@ -61,6 +61,7 @@ else
     classExp = class(sampleSet);
 end
 numClassExp = hist(classExp,[1:R]);
+finalSample = initSample+sampleSize-1;
 
 % remove samples with zero response times
 rtzero = rtExp ==0;
@@ -80,7 +81,7 @@ numNotProcExp = numNotProcExp/R;
 % Estimate think-time rates 
 lambda = zeros(1,R);
 for k = 1:R
-    lambda(k) = min(1E6, (numClassExp(k)/(at(finalSample) + rt(finalSample) - at(firstSample)) )/numNotProcExp);  
+    lambda(k) = min(1E6, (numClassExp(k)/(at(finalSample) + rt(finalSample) - at(initSample)) )/numNotProcExp);  
 
     if lambda(k) < 0 
         lambda(k) = 1E6;
