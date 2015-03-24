@@ -1,4 +1,4 @@
-modaclouds-fg-demandEstimation
+modaclouds-fg-demand
 ==============================
 
 Filling The Gap - Demand Estimation methods
@@ -6,9 +6,9 @@ Filling The Gap - Demand Estimation methods
 This is the readme file of the demand estimation methods. 
 
 QUICK START 
- - Download all the scripts, including the folder named DATA.  
+ - Download all the scripts, including the folder named "data".  
  - Start MATLAB. 
- - Run the SAMPLE_ESTIMATION script. 
+ - Run the "sample_estimation.m" script. 
 
 
 USER GUIDE
@@ -17,7 +17,7 @@ There are two ways to use the scripts provided.
 1. All the scripts named MAIN_XXX implement the estimations methods, using 
 as input a standard data format. 
 
-The format is a 6x(R+1) MATLAB cell, where R is the number of requests classes. 
+The format is a 6x(R+1) MATLAB cell array, where R is the number of requests classes. 
 For the estimation methods provided here, it is enough to specify rows 3 and 4 
 of this data format, which are: 
  - row 3: Entry (3,j) of the cell contains a column vector with the ARRIVAL TIMES, 
