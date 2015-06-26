@@ -21,11 +21,13 @@ function [meanST,obs] = des_CI(times, initSample, sampleSize,W,V)
 K = length(times);
 
 
-%compute departure times
+%compute departure times and ids
+id = 1;
 for k = 1:K
     for i = 1:size(times{k},1)
         times{k}(i,3) = times{k}(i,1) + times{k}(i,2); % departure time
-        times{k}(i,4) = i;  % ID
+        times{k}(i,4) = id;  % ID
+        id = id + 1; 
     end
 end
 
@@ -140,7 +142,7 @@ while sum(acum(:,1)) < sampleSize%size(timesOrder,1)
     i = i+1;
     told = t;
 end
-meanST = acum(:,2)./acum(:,1);
+meanST = (acum(:,2)./acum(:,1))';
 
 
 
