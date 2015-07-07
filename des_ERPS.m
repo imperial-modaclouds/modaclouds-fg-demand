@@ -31,7 +31,7 @@ end
 avgBusyCores = min(mean(busyCores),nCores);
 
 % regression analysis to estimate mean demands 
-for r=1:r
+for r=1:R
     respTimes = rTimes{1,r};
     totalQL = sum(aQueue{1,r},2)/avgBusyCores;
     demandEst(r) = lsqnonneg(totalQL,respTimes)';
